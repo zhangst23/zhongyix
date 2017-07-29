@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+	<div class="crumb">
+		<ol class="breadcrumb">
+		  <li><a href="{% url 'fangji:index' %}">首页</a></li>
+		  <li><a href="{% url 'book:index' %}">医书</a></li>
+		  <li><a href="{{ book_chapter.book.get_absolute_url }}">{{ book_chapter.book }}</a></li>
+		  <li class="active">{{ book_chapter.name }}</li>
+		</ol>
+	</div>
+
+<!-- <head>
+	<meta charset="UTF-8">
+	<title>{{ book_chpater.name }} - 中医助手</title>
+</head> -->
+
+	<h1 class="name">
+		{{ book_chapter.name }}
+	</h1>
+	<br>
+	<span>书籍:<a href="{{ book_chapter.book.get_absolute_url }}">{{ book_chapter.book }}</a></span><br>
+	<span>作者:{{ book_chapter.book.author }}</span>
+	<br><br>
+	<div class="content">
+		{{ book_chapter.content|safe }}
+	</div>
+
+{% endblock main %}

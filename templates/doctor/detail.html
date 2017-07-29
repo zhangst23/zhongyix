@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<div class="crumb">
+		<ol class="breadcrumb">
+		  <li><a href="{% url 'book:index' %}">首页</a></li>
+		  <li><a href="{% url 'doctor:index' %}">名医</a></li>
+		  <li class="active">{{ doctor.name }}</li>
+		</ol>
+	</div>
+
+
+	<h1 class="name">
+		<a href="{{ doctor.get_absolute_url }}">{{ doctor.name }}</a> 
+	</h1>
+	<br>
+
+	<div class="row">
+	  <div class="col-xs-6 col-md-3">
+	      <img src="/upload/{{ doctor.doctorface }}" alt="{{ doctor.name }}" style="width:134px;height:180px;">
+	  </div>
+	  <div class="col-xs-6 col-md-3">
+			<span>省份:{{ doctor.province }}</span><br>
+			<span>朝代:{{ doctor.dynastic }}</span>
+	  </div>
+	  <div class="col-xs-6 col-md-3">
+	    <a href="#" class="thumbnail">
+	      其他
+	    </a>
+	  </div>
+	  <div class="col-xs-6 col-md-3">
+	    <a href="#" class="thumbnail">
+	      其他
+	    </a>
+	  </div>
+	</div>
+
+
+	<br><br>
+	<div class="content">
+		{{ doctor.wiki|safe }}
+	</div>
+
+{% endblock main %}

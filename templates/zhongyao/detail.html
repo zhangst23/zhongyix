@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<!-- <head>
+	<meta charset="UTF-8">
+	<title>{{ zhongyao.name }} - 中药</title>
+	<style>
+		.zhongyao span {
+			background-color: #ddd;
+			padding: 2px 5px;
+			border-left: 2px solid #666;
+			margin-right: 1em;
+		}
+	</style>
+</head> -->
+	<div class="crumb">
+		<ol class="breadcrumb">
+		  <li><a href="{% url 'book:index' %}">首页</a></li>
+		  <li><a href="{% url 'zhongyao:index' %}">中药材</a></li>
+		  <li class="active">{{ zhongyao.name }}</li>
+		</ol>
+	</div>
+
+
+	<h1 class="name">
+		<a href="{{ zhongyao.get_absolute_url }}">{{ zhongyao.name }}</a> 
+	</h1>
+	<br>
+	<div class="zhongyao">
+		<p><span>药名:</span>{{ zhongyao.name }}</p>
+		<p><span>英文名:</span>{{ zhongyao.name_en }}</p>
+		<p><span>别名:</span>{{ zhongyao.alias }}</p>
+		<p><span>地区:</span>{{ zhongyao.area }}</p>
+		<p><span>形状:</span>{{ zhongyao.shape|safe }}</p>
+		<p><span>鉴别:</span>{{ zhongyao.distinguish|safe }}</p>
+		<p><span>性味:</span>{{ zhongyao.xingwei }}</p>
+		<p><span>归经:</span>{{ zhongyao.guijing }}</p>
+		<p><span>功能主治:</span>{{ zhongyao.function|safe }}</p>
+		<p><span>化学成分:</span>{{ zhongyao.chemical|safe }}</p>
+		<p><span>药理学:</span>{{ zhongyao.pharmacology|safe }}</p>
+		<p><span>禁忌:</span>{{ zhongyao.dosage }}</p>
+		<p><span>贮藏保存:</span>{{ zhongyao.storage }}</p>
+
+		<br><br>
+	</div>
+
+{% endblock main %}

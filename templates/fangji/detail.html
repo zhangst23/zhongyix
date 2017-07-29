@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<!-- <head>
+	<meta charset="UTF-8">
+	<title>{{ fangji.name }} - 方剂</title>
+	<style>
+		.fangji span {
+			background-color: #ddd;
+			padding: 2px 5px;
+			border-left: 2px solid #666;
+			margin-right: 1em;
+		}
+	</style>
+</head> -->
+	<div class="crumb">
+		<ol class="breadcrumb">
+		  <li><a href="{% url 'book:index' %}">首页</a></li>
+		  <li><a href="{% url 'fangji:index' %}">方剂</a></li>
+		  <li class="active">{{ fangji.name }}</li>
+		</ol>
+	</div>
+
+	<h1 class="name">
+		<a href="{{ fangji.get_absolute_url }}">{{ fangji.name }}</a> 
+	</h1>
+	<br>
+	<div class="fangji">
+		<p><span>药名:</span>{{ fangji.name }}</p>
+		<p><span>处方:</span>{{ fangji.prescription|safe }}</p>
+		<p><span>功能主治:</span>{{ fangji.function|safe }}</p>
+		<p><span>禁忌:</span>{{ fangji.dosage|safe }}</p>
+		<br><br>
+	</div>
+
+{% endblock main %}

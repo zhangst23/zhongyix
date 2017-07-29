@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+
+	<h1>中药</h1>
+	<p>备注：</p>
+	<br><br>
+
+	{% for zhongyao in zhongyao_list %}
+		<article class="zhongyao">
+			<h2 class="name">
+				<a href="{{ zhongyao.get_absolute_url }}">{{ zhongyao.name }}</a>
+			</h2>
+			
+		</article>
+	{% empty %}
+  	<div class="no-zhongyao">暂时无中药</div>
+  {% endfor %}
+
+
+	<br><br><br>
+
+	<div class="pagination-simple">
+		{% if zhongyao_list.has_previous %}
+			<a href="?page={{ zhongyao_list.previous_page_number }}">上一页</a>
+		{% endif %}
+		<span class="current">第 {{ zhongyao_list.number }} 页 / 共 {{ zhongyao_list.paginator.num_pages }} 页</span>
+		<!-- 如果当前页还有下一页，显示一个下一页的按钮 -->
+		{% if zhongyao_list.has_next %}
+			<a href="?page={{ zhongyao_list.next_page_number }}">下一页</a>
+		{% endif %}
+	</div>
+
+
+
+
+
+
+
+{% endblock main %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block main %}
+
+	<h1>方剂</h1>
+	<p>备注：</p>
+	<br><br>
+	{% for fangji in fangji_list %}
+		<article class="fangji">
+			<h2 class="name">
+				<a href="{{ fangji.get_absolute_url }}">{{ fangji.name }}</a>
+			</h2>
+			
+		</article>
+	{% empty %}
+  	<div class="no-fangji">暂时无方剂</div>
+  {% endfor %}
+
+
+	<br><br><br>
+
+	<div class="pagination-simple">
+		{% if fangji_list.has_previous %}
+			<a href="?page={{ fangji_list.previous_page_number }}">上一页</a>
+		{% endif %}
+		<span class="current">第 {{ fangji_list.number }} 页 / 共 {{ fangji_list.paginator.num_pages }} 页</span>
+		<!-- 如果当前页还有下一页，显示一个下一页的按钮 -->
+		{% if fangji_list.has_next %}
+			<a href="?page={{ fangji_list.next_page_number }}">下一页</a>
+		{% endif %}
+	</div>
+
+
+
+
+
+{% endblock main %}

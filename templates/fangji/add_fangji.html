@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+		<h1>添加方剂</h1>
+
+		<form action="{% url 'fangji:add_fangji' %}" method="post">
+			{% csrf_token %}
+			方剂名：<input type="text" name="name"><br>
+			方剂组成：<input type="text" name="prescription"><br>
+			功能主治：<input type="text" name="function"><br>
+			剂量：<input type="text" name="dosage"><br>
+			禁忌：<input type="text" name="taboo"><br>
+			<input type="submit" value="提交"><br>
+		</form>
+
+
+{% endblock main %}

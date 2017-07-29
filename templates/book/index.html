@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load book_tags %}
+
+{% block main %}
+	<h1>中医书籍</h1>
+	<p>备注：</p>
+	<br><br>
+
+
+	<div class="widget widget-category">
+		<strong class="widget-title">分类:</strong>
+		{% get_mulus as mulu_list %}
+		<ul style="display: block;margin-top: -20px;">
+			{% for mulu in mulu_list %}
+			<li style="display:inline-block;">
+				<a href="{% url 'book:mulu' mulu.pk %}">{{ mulu.name }}</a>
+			</li>
+			{% empty %}
+	    暂无分类
+			{% endfor %}
+		</ul>
+	</div>
+<br><br>
+
+	{% for book in book_list %}
+		<article class="book">
+			<h3 class="name">
+				<a href="{{ book.get_absolute_url }}">{{ book.name }}</a>
+			</h3>
+			<span class="views-count">{{ book.views }} 阅读</span>
+      <p>{{ book.excerpt }} ...</p>
+      <div class="read-more">
+          <a href="{{ book.get_absolute_url }}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+      </div>
+		</article>
+	{% empty %}
+  	<div class="no-book">暂时还没有书籍</div>
+  {% endfor %}
+
+<br><br><br>
+
+{% include 'pagination.html' %}
+
+
+
+
+{% endblock main %}

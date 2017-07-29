@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<div class="crumb">
+		<ol class="breadcrumb">
+		  <li><a href="{% url 'fangji:index' %}">首页</a></li>
+		  <li><a href="{% url 'book:index' %}">医书</a></li>
+		  <li class="active">{{ book.name }}</li>
+		</ol>
+	</div>
+
+
+	<h1 class="name">
+		{{ book.name }}
+	</h1>
+	<br>
+	<div class="row">
+	  <div class="col-xs-6 col-md-3">
+	      <img src="/upload/{{ book.bookface }}" alt="{{ book.name }}" style="width:134px;height:180px;">
+	  </div>
+	  <div class="col-xs-6 col-md-3">
+			<span>分类:{{ book.mulu }}</span><br>
+			<span>作者:{{ book.author }}</span><br>
+			<span class="views-count">阅读量：{{ book.views }}</span>
+	  </div>
+	  <div class="col-xs-6 col-md-3">
+	    <a href="#" class="thumbnail">
+	      医生作者图片
+	    </a>
+	  </div>
+	  <div class="col-xs-6 col-md-3">
+	    <a href="#" class="thumbnail">
+	      其他
+	    </a>
+	  </div>
+	</div>
+
+	<br><br>
+	<div class="content">
+		{{ book.content|safe }}
+	</div>
+	<div class="chapter">
+		{% for book_chapter in  book_chapter_list %}
+		<ul class="chapter-list">
+			<li class="chapter-item">
+				<a href="{{ book_chapter.get_absolute_url }}">{{ book_chapter.name }}</a>
+			</li>
+		</ul>
+		{% endfor %}
+	</div>
+
+
+{% endblock main %}

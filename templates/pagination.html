@@ -1,0 +1,10 @@
+  <div class="pagination-simple">
+    {% if book_list.has_previous %}
+      <a href="?page={{ book_list.previous_page_number }}">上一页</a>
+    {% endif %}
+    <span class="current">第 {{ book_list.number }} 页 / 共 {{ book_list.paginator.num_pages }} 页</span>
+    <!-- 如果当前页还有下一页，显示一个下一页的按钮 -->
+    {% if book_list.has_next %}
+      <a href="?page={{ book_list.next_page_number }}">下一页</a>
+    {% endif %}
+  </div>
